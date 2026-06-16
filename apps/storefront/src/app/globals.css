@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+:root {
+  /* LIGHT LUXURY PALETTE (Restored & Refined) */
+  --background: #F9F8F6; /* Warm Off-White / Paper */
+  --foreground: #1c1917; /* Very Dark Brown/Black for text (softer than #000) */
+  --text-secondary: #78716c; /* Warm Stone Grey */
+  --text-muted: #a8a29e;
+  
+  --accent: #1c1917; /* Matches foreground for bold elements */
+  --accent-secondary: #d6d3d1; /* Soft Stone */
+  
+  --card-bg: #FFFFFF;
+  --card-border: #d6d3d1; /* Slightly darker grey for visible grid lines */
+  --section-bg: #f5f5f4; /* Subtle differentiation from main background */
+  
+  --color-sale: #be123c; /* Deep Rose Red */
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  /* Use Inter as the primary body font, falling back to system UI */
+  font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overflow-x: hidden;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* SUBTLE PAPER TEXTURE (For Light Mode) */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.03; /* Very subtle grain */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply; /* Blends better with light backgrounds */
+}
+
+::selection {
+  background: var(--foreground);
+  color: var(--background);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d6d3d1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a29e;
+}
+
+.subtitle {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+}
+
+/* Make all Lato body text appear regular instead of overly light */
+.font-light {
+  font-weight: 400 !important;
+}
+
+/* Glassmorphism for Light Mode */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85); /* White glass */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Journal article typography tweaks - hide section headings in body copy */
+.prose h3 {
+  display: none;
+  margin: 0;
+  padding: 0;
+}
+
+.prose h3 + p {
+  margin-top: 1.5em;
+}
